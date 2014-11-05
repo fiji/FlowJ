@@ -1,7 +1,6 @@
 package FlowJ;
-import ij.*;
-import ij.process.*;
-import bijnum.*;
+import bijnum.BIJmatrix;
+import ij.process.ImageProcessor;
 /**
  * This class maps spotnoise of a flow field.
  *

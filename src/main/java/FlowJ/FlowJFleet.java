@@ -1,8 +1,16 @@
 package FlowJ;
-import ij.*;
-import ij.process.*;
-import volume.*;
-import bijnum.*;
+import bijnum.BIJmatrix;
+import ij.IJ;
+import ij.ImagePlus;
+import ij.ImageStack;
+import ij.process.FloatProcessor;
+import ij.process.ImageProcessor;
+import volume.GaborCos;
+import volume.GaborSin;
+import volume.Gaussian;
+import volume.Kernel1D;
+import volume.VolumeFloat;
+import volume.VolumeIO;
 
 /*
 	  This is a class that implements the Fleet/Jepson optical flow algorithm.
