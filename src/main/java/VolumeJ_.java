@@ -85,7 +85,7 @@ public class VolumeJ_ implements PlugIn
 	/**
 	 * Interface for macro control of volume rendering. Does the same thing as VJUserInterface, but without
 	 * a user interface. Straightly sets up a rendering.
-	 * @param algorithm int 0 = RAYTRACE< 1 = ISOSURFACE
+	 * @param algorithm int 0 = RAYTRACE, 1 = ISOSURFACE
 	 * @param mode int 0 = mono, 1 = stereo, 2 = cine
 	 * @param interpolation int 0 = NN, 1 = trilinear
 	 * @param lightx int
