@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>FlowJ_</artifactId>
-	<version>1.29.2-SNAPSHOT</version>
+	<version>1.29.2</version>
 
 	<name>plugins/FlowJ_.jar</name>
 	<description />
@@ -55,7 +55,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/fiji/FlowJ</connection>
 		<developerConnection>scm:git:git@github.com:fiji/FlowJ</developerConnection>
-		<tag>HEAD</tag>
+		<tag>FlowJ_-1.29.2</tag>
 		<url>https://github.com/fiji/FlowJ</url>
 	</scm>
 	<issueManagement>
