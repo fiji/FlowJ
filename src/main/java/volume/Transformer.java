@@ -32,11 +32,11 @@ public class Transformer
          * Transform image using the transformation parameters in p.
          * The transformation parameters do not include centering the image before rotation around
          * the rotation axis. The rotation is around the center of the image.
-         * @param the image to be transformed.
+         * @param image the image to be transformed.
          * @param width the width of the image.
          * @param p a float[] with the transformation parameters:
-         * @see convertParametersIntoTransformationMatrix
          * @return the transformation of image.
+         * @see #convertParametersIntoTransformationMatrix
          */
         public static float [] transform(float [] image, int width, float [] p)
         throws Exception
@@ -47,13 +47,13 @@ public class Transformer
          * Transform image using the transformation parameters in p.
          * The transformation parameters do not include centering the image before rotation around
          * the rotation axis.
-         * @param the image to be transformed.
+         * @param image the image to be transformed.
          * @param width the width of the image.
          * @param p a float[] with the transformation parameters:
-         * @see convertParametersIntoTransformationMatrix
          * @param xcenter the x center for rotation.
          * @param ycenter the ycenter for rotation.
          * @return the transformation of image.
+         * @see #convertParametersIntoTransformationMatrix
          */
         public static float [] transform(float [] image, int width, float [] p, float xcenter, float ycenter)
         throws Exception
@@ -102,7 +102,8 @@ public class Transformer
          * p[3] scaling x
          * p[4] scaling y
          * </pre>
-         * @param xcenter, ycenter the x and y center for rotation if any.
+         * @param xcenter the x center for rotation if any.
+         * @param ycenter the y center for rotation if any.
          * @return a transformation matrix.
          */
         public static float [][] convertParametersIntoTransformationMatrix(float [] p, float xcenter, float ycenter)
@@ -183,7 +184,8 @@ public class Transformer
 	 * Bilinearly interpolate the pixel at x,y. Take care of NaN pixels.
 	 * @param image the image in which to interpolate
 	 * @param width the width of the image.
-	 * @param x,y the position at which to interpolate.
+	 * @param x the x position at which to interpolate.
+	 * @param y the y position at which to interpolate.
 	 * @return the interpolated value at x,y, NaN if any of the involved pixels are NaN.
 	 */
 	public static float bilinear(float[] image , int width, float x, float y)
@@ -205,7 +207,7 @@ public class Transformer
 	}
 	/**
 	 * Transform the image in fp by translation parameters p
-	 * @param fp and ImageProcessor
+	 * @param ip and ImageProcessor
 	 * @param p the transformation parameters (translation only).
 	 * <pre>
 	 * p[0] translation x-dir
@@ -238,8 +240,8 @@ public class Transformer
          * Quickly transform an image for whole pixel shifts.
          * @param image a float[] image
          * @param width the width of image
-         * @param x the x shift
-         * @param y the y-shift.
+         * @param xshift the x shift
+         * @param yshift the y-shift.
          * @return the shifted image.
          */
         public static float [] quick(float [] image, int width, int xshift, int yshift)

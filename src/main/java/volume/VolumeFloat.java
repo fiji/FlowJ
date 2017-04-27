@@ -56,7 +56,7 @@ public class VolumeFloat extends Volume
         }
         /**
         * Creates a float volume which is an exact copy of vl.
-        * @param vl the VolumeFloat to be copied.
+        * @param v1 the VolumeFloat to be copied.
         */
         public VolumeFloat(VolumeFloat v1)
         {
@@ -146,7 +146,7 @@ public class VolumeFloat extends Volume
         public Object get(int x, int y, int z) { return new Float(v[z][y][x]); }
         /**
          * Set the voxel value to a Number.
-         * @value a Number with the voxel value at x,y,z
+         * @param value a Number with the voxel value at x,y,z
          * @param x the x position of the voxel
          * @param y the y position of the voxel
          * @param z the z position of the voxel

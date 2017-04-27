@@ -165,7 +165,7 @@ public class VJRender extends VJRenderer
          * Link to VJAlphaColor.blendComposeScalar() so that this method can be overloaded.
          * @param pixel contains the current composite
          * @param value contains the current voxel (needed by some subclasses).
-         * @param gradient the interpolated gradient for shading
+         * @param g the interpolated gradient for shading
          * @param color contains the alpha value and color (grayscale or RGB) of the classified value.
          * @param shade is the effect of shading.
 	  */

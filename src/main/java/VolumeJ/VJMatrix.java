@@ -49,7 +49,7 @@ public class VJMatrix
         }
         /**
          * Create a new transformation matrix initialized to another matrix.
-         * @param m1 the matrix that is copied to this matrix.
+         * @param vjm the matrix that is copied to this matrix.
          */
         public VJMatrix(VJMatrix vjm)
         {
@@ -69,7 +69,10 @@ public class VJMatrix
         }
         /**
          * Translate the coordinate system to tx, ty, tz.
-         * @param tx,ty,tz the amounts to translate on each of the three axes.
+         * 
+         * @param tx the amount to translate on the x axis.
+         * @param ty the amount to translate on the y axis.
+         * @param tz the amount to translate on the z axis.
          */
         public void translate(double tx, double ty, double tz)
         {
@@ -174,7 +177,7 @@ public class VJMatrix
         /**
          *  Multiply this transformation matrix with another transformation matrix in place.
          *  this = m1 this
-         *  @param ml a VJMatrix.
+         *  @param m0 a VJMatrix.
          */
         public void mul(VJMatrix m0)
         {
@@ -192,7 +195,7 @@ public class VJMatrix
         /**
          *  Return the n-th column of the 3D transform matrix as a vector.
          *  This can be used to step through the coordinate system incrementally along an arbitrary axis.
-         *  @param the axis for which to get the column. 0 = i, 1 = j, 2 = k axis.
+         *  @param n the axis for which to get the column. 0 = i, 1 = j, 2 = k axis.
          *  @return a 4-D vector
          */
          public float [] getColumn(int n)
@@ -222,7 +225,9 @@ public class VJMatrix
 	}
         /**
          * Shear the coordinate system by sx, sy.
-         * @param sx,sy the amounts of shear by on each of the two axes.
+         * 
+         * @param sx amount to shear by on the x axis.
+         * @param sy amount to shear by on the y axis.
          */
 	public void shear(double sx, double sy)
         {
@@ -305,6 +310,7 @@ public class VJMatrix
                 } catch (Exception e) { VJUserInterface.error("VJMatrix: "+e); }
                 return new VJMatrix(mi);
         }
+        @Override
         public String toString()
         {
                 String s = "";

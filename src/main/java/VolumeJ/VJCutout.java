@@ -87,7 +87,7 @@ public class VJCutout
         /**
          * This routine decides whether to show a cutout slice or a rendered surface
          * at pixel i,j. The routine is as follows:
-         * Check whether ac contains a surface near vl (the opacity of ac > 0.5).
+         * Check whether ac contains a surface near vl (the opacity of {@code ac > 0.5}).
          * If there is a surface at or near vl,
          * the 3 intersections of the ray from i,j into the volume with
          * the x,y,z cutout-planes are determined.

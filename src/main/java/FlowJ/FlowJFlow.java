@@ -21,12 +21,14 @@ import volume.VolumeFloat;
  * Reading and writing is done in the famous Burkitt format to be compatible with other optical flow
  * packages.
  * The Burkitt format is defined as follows:
- * <width: float><height: float><computed width: float><computed height: float>
- * <x-offset from edge: float><y-offset from edge:float>
- * <x-component of flow vector at 0,0: float><y-component of flow vector at 0,0: float>
- * <x-component of flow vector at 0,1: float><y-component of flow vector at 0,1: float>
+ * <pre>
+ * [width: float][height: float][computed width: float][computed height: float]
+ * [x-offset from edge: float][y-offset from edge:float]
+ * [x-component of flow vector at 0,0: float][y-component of flow vector at 0,0: float]
+ * [x-component of flow vector at 0,1: float][y-component of flow vector at 0,1: float]
  * ...
  * ...
+ * </pre>
  *
  * where float = 4 byte little endian float.
  *

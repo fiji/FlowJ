@@ -6,7 +6,7 @@ import ij.IJ;
  * Redesigned to be faster, for float. Internal calculations are still double though.
  * From Press et al., 2nd ed., Numerical Solutions in C.
  *
- * @see Jacobi.java
+ * See Jacobi.java
  * for the original sources which I kept to be sure because they worked.
  *
  * Copyright (c) 1999-2003, Michael Abramoff. All rights reserved.
@@ -43,7 +43,7 @@ public class BIJJacobi
 	/**
 	 * Create new instance to compute eigenvectors, eigenvalues.
 	 * @param m a real, symmetric matrix of nxn.
-	 * @param doFeedback, whether a progress routine should be called after each sweep (only for user interaction).
+	 * @param doFeedback whether a progress routine should be called after each sweep (only for user interaction).
 	 */
 	public BIJJacobi(float [][] m, boolean doFeedback)
 	{
@@ -227,6 +227,7 @@ public class BIJJacobi
 	}
 	public int nrot() { return nrot; }
 	public int sweeps() { return sweeps; }
+	@Override
 	public String toString()
 	{
 		StringBuffer sb = new StringBuffer();

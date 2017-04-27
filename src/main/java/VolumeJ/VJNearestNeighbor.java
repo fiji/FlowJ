@@ -35,6 +35,7 @@ public class VJNearestNeighbor extends VJInterpolator
          *  @param v the volume to be interpolated.
          *  @return boolean whether or not vl falls within the bounds.
         */
+        @Override
         public boolean isValid(VJVoxelLoc vl, Volume v)
         {
                 return (vl.ix >= 0 && vl.ix < v.getWidth() &&
@@ -47,6 +48,7 @@ public class VJNearestNeighbor extends VJInterpolator
          *  @param v the volume to be interpolated.
          *  @return boolean whether or not vl falls within the bounds.
         */
+        @Override
         public boolean isValidGradient(VJVoxelLoc vl, Volume v)
         {
                 return (vl.ix-1 >= 0 && vl.ix+1 < v.getWidth() &&
@@ -57,24 +59,26 @@ public class VJNearestNeighbor extends VJInterpolator
          *  @param c a VJCell for which you want to know whether it falls inside the bounds,
          *  taking account of support for the gradient kernel.
          *  @param v the volume to be interpolated.
-         *  @param boolean whether or not c falls within the bounds.
+         *  @return boolean whether or not c falls within the bounds.
         */
+        @Override
         public boolean isValidGradient(VJCell c, Volume v)
         {
                 return (c.ix-1 >= 0 && c.ix+1 < v.getWidth() &&
                         c.iy-1 >= 0 && c.iy+1 < v.getHeight() && c.iz-1 >= 0 && c.iz+1 < v.getDepth());
         }
-		/**
-		 * Interpolate a volume. This method can be overloaded in subclasses
-		 * for different interpolation algorithms.
-         * Interpolate the value of v at location vl.
-		 * voxel must be instantiated as a (sub)class of VJValue.
-		 * @param voxel a VJValue which will contain the interpolated voxel value on exit.
-		 * @param v a volume
+        /**
+         * Interpolate a volume. This method can be overloaded in subclasses
+         * for different interpolation algorithms.
+               * Interpolate the value of v at location vl.
+         * voxel must be instantiated as a (sub)class of VJValue.
+         * @param voxel a VJValue which will contain the interpolated voxel value on exit.
+         * @param v a volume
          * @param vl a location in the volume.
          * @return voxel, which contains the value in v at vl.
-		 */
-		public VJValue value(VJValue voxel, Volume v, VJVoxelLoc vl)
+         */
+        @Override
+        public VJValue value(VJValue voxel, Volume v, VJVoxelLoc vl)
         {
                 if (v instanceof VolumeShort)
                 {
@@ -90,7 +94,7 @@ public class VJNearestNeighbor extends VJInterpolator
                         }
                         else
                                 voxel.intvalue = value(((VolumeShort) v).v, vl);
-                        voxel.floatvalue = (float) voxel.intvalue;
+                        voxel.floatvalue = voxel.intvalue;
                 }
 				else if (v instanceof VolumeFloat)
 						voxel.floatvalue = value(((VolumeFloat) v).v, vl);
@@ -111,6 +115,7 @@ public class VJNearestNeighbor extends VJInterpolator
          * @param vl the VJVoxelLoc where to interpolate the gradient
          * @return a VJGradient with the interpolated value(s).
          */
+        @Override
         public VJGradient gradient(Volume v, VJVoxelLoc vl)
         {
                 if (v instanceof VolumeShort)
@@ -181,7 +186,7 @@ public class VJNearestNeighbor extends VJInterpolator
 		/**
 		 * Interpolate hue and saturation in an RGB int[][] volume organized as an array of slices.
 		 * @param hs a float[2] that will contain the hue and saturation [0-1] on return.
-		 * @param v the volume array in which to interpolate
+		 * @param sliceArray the volume array in which to interpolate
 		 * @param width the width of the volume.
 		 * @param vl the location where to interpolate.
 		 * @return hs, the interpolated hue and saturation at vl.
@@ -238,9 +243,9 @@ public class VJNearestNeighbor extends VJInterpolator
 		 */
 		protected static VJGradient gradient(byte [] v, int height, int width, VJVoxelLoc vl)
 		{
-				double gx = (((int)v[vl.getnnz()*height*width+vl.getnny()*width+(vl.getnnx()-1)]&0xff)-((int)v[vl.getnnz()*height*width+vl.getnny()*width+(vl.getnnx()+1)]&0xff));
-				double gy = (((int)v[vl.getnnz()*height*width+(vl.getnny()-1)*width+vl.getnnx()]&0xff)-((int)v[vl.getnnz()*height*width+(vl.getnny()+1)*width+vl.getnnx()]&0xff));
-				double gz =	(((int)v[(vl.getnnz()-1)*height*width+vl.getnny()*width+vl.getnnx()]&0xff)-((int)v[(vl.getnnz()+1)*height*width+vl.getnny()*width+vl.getnnx()]&0xff));
+				double gx = ((v[vl.getnnz()*height*width+vl.getnny()*width+(vl.getnnx()-1)]&0xff)-(v[vl.getnnz()*height*width+vl.getnny()*width+(vl.getnnx()+1)]&0xff));
+				double gy = ((v[vl.getnnz()*height*width+(vl.getnny()-1)*width+vl.getnnx()]&0xff)-(v[vl.getnnz()*height*width+(vl.getnny()+1)*width+vl.getnnx()]&0xff));
+				double gz = ((v[(vl.getnnz()-1)*height*width+vl.getnny()*width+vl.getnnx()]&0xff)-(v[(vl.getnnz()+1)*height*width+vl.getnny()*width+vl.getnnx()]&0xff));
 				VJGradient g = new VJGradient(gx, gy, gz);
 				return g;
 		}
@@ -255,5 +260,6 @@ public class VJNearestNeighbor extends VJInterpolator
         {
                 return v[vl.getnnz()][vl.getnny()][vl.getnnx()][dimension];
         }
+        @Override
         public String toString() { return " nearest neighbor "; }
 }

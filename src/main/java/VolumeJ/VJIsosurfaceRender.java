@@ -50,8 +50,9 @@ public class VJIsosurfaceRender extends VJRenderer
 	}
 	/**
 	 * The volume has changed. Reset the volume size and the binary shell.
-	 * @param volume the new volume.
+	 * @param v the new volume.
 	 */
+	@Override
 	public void setVolume(Volume v)
 	{
 		// The binary shell is computed to which cells are interesting. All other cells
@@ -65,6 +66,7 @@ public class VJIsosurfaceRender extends VJRenderer
 	/**
 	 *  Variables are all inherited from VJRenderer
 	*/
+	@Override
 	public synchronized void run()
 	{
 		/** Isosurface volume rendering is a rendering technique whereby the surfaces at a specified iso value
@@ -108,7 +110,7 @@ public class VJIsosurfaceRender extends VJRenderer
 		// Create a place to store extra interpolated voxel information for color rendering.
 		VJValue sample0 = null;
 		if (outputType == COLORINT && v instanceof VolumeRGB)
-		   sample0 = (VJValue) (new VJValueHSB());
+		   sample0 = new VJValueHSB();
 		else
 		   sample0 = new VJValue();
 		VJValue sample1 = new VJValue();
@@ -234,10 +236,13 @@ public class VJIsosurfaceRender extends VJRenderer
 	}
 	/**
 	 * Do bisection for a number of steps.
+	 * @param sample
 	 * @param vlk0 the ray position at k0 in objectspace coordinates.
 	 * @param iso the value of the isosurface
-	 * @param k0, k1 the positions on the ray you want to bisect between.
-	 * @param k1sample, k2sample the volume sample values at k1 and k2.
+	 * @param k0 x position on the ray you want to bisect between.
+	 * @param k1 y position on the ray you want to bisect between.
+	 * @param k0sample the volume sample value at k0.
+	 * @param k1sample the volume sample values at k1.
 	 * @param kstep a float[4] with for x,y,z the changes in objectspace coordinates for a step in k-direction
 	 * in viewspace.
 	 * @param steps the number of bisection steps.

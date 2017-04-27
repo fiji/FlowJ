@@ -274,6 +274,7 @@ public abstract class VJRenderer extends Thread
         * To be overloaded, does nothing.
         * Should set <code>running</code> to true and check it.
         */
+        @Override
         public void run()
         {
         }
@@ -287,7 +288,7 @@ public abstract class VJRenderer extends Thread
         }
         /**
          * The volume has changed. Reset the volume.
-         * @param volume the new volume.
+         * @param v the new volume.
          */
         public void setVolume(Volume v) {   this.v = v; }
         /**

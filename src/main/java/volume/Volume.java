@@ -72,33 +72,38 @@ public abstract class Volume extends Object implements java.io.Serializable
          * @return the z-aspect ratio.
          */
         public double getAspectz() { return aspectz; }
-        /** These are depreciated methods. */
+        /** These are deprecated methods. */
         /**
          * Get the edge in the volume beyond which a voxel is not valid.
-         * @depreciated
+         * @deprecated
          */
+        @Deprecated
         public int getEdge() { return edge; }
         /**
          * Set the edges in the volume beyond which a voxel is not valid.
-         * @depreciated
+         * @deprecated
          */
+        @Deprecated
         public void setEdge(int edge) { this.edge = edge; }
         /**
          * Check whether x,y,z are within the edges.
-         * @depreciated
+         * @deprecated
          */
+        @Deprecated
         public boolean in(double x, double y, double z)
         { return (x >= edge && x < width-edge && y >= edge && y < height - edge); }
         /**
          * Check whether x,y are within the edges.
-         * @depreciated
+         * @deprecated
          */
+        @Deprecated
         public boolean valid(int x, int y)
         { return (x >= edge && x < width-edge && y >= edge && y < height - edge); }
         /**
          * Check whether x,y,z are within the edges.
-         * @depreciated
+         * @deprecated
          */
+        @Deprecated
         public boolean valid(int x, int y, int z)
         { return (x >= edge && x < width-edge && y >= edge && y < height - edge && z >= edge && z < depth - edge); }
         /**
@@ -108,12 +113,12 @@ public abstract class Volume extends Object implements java.io.Serializable
         {
             if (kernel instanceof Kernel)
                   return Math.max(depth, kernel.support() + depth-1);
-            else
-                  return depth;
+            return depth;
         }
         /**
          * Return a string describing the volume.
          */
-        public String toString()
+        @Override
+				public String toString()
         { return "volume: "+width+"x"+height+"x"+depth+" anisotropy: "+aspectx+"x"+aspecty+"x"+aspectz; }
 }

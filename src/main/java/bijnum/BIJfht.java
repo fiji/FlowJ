@@ -56,17 +56,14 @@ public class BIJfht
 	* Perform a Fast Hartley Transform on an image BIJfht of maxN x maxN pixels.
 	* If inverse == true, do the inverse transform. m is modified!
 	* @param m the matrix of the image, an array of floats
-	* @param maxN the size of the matrix
 	* @param inverse a flag whether to perform the forward or inverse transform.
-	* @return m which is changed!
 	*/
 	public void compute(float [] m, boolean inverse)
 	throws IllegalArgumentException
 	{
 		if (maxN != (int) Math.sqrt(m.length))
 		        throw new IllegalArgumentException("BIJfht.compute(): matrix not square");
-                else
-		        rc2DFHT(m, inverse, maxN);
+		rc2DFHT(m, inverse, maxN);
 	}
 	/**
 	* Compute the conjugate product R = IM1* IM2 for real matrices (Hartley transformed) im1 and im2.
@@ -78,7 +75,6 @@ public class BIJfht
 	* This is the best function for obtaining the translation from im1 to im2.
 	* @param im1 a real Hartley transform of an image
 	* @param im2 a real Hartley transform of another image
-	* @param maxN the size of im1 and im2 in pixels. im1 and im2 should be maxN x maxN.
 	* @return the resulting matrix with the conjugate product of the two transforms.
 	*/
 	public float [] crossPowerSpectrum(float [] im1, float [] im2)

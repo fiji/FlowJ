@@ -2,8 +2,8 @@ package VolumeJ;
 
 /**
  * VJrgbValue. Contains a rgb value plus an index.
- * This is a more object oriented way of passing interpolated voxel values around than &-ing
- * them into an int.
+ * This is a more object oriented way of passing interpolated voxel values
+ * around than {@code &}-ing them into an int.
  *
  * Copyright (c) 2001-2002, Michael Abramoff. All rights reserved.
  * @author: Michael Abramoff
@@ -30,7 +30,9 @@ public class VJrgbValue extends VJValue
         public VJrgbValue() {}
         /**
          * Create a new VJrgbValue.
-         * @param r,g,b int for R,G and B
+         * @param r red value
+         * @param g green value
+         * @param b blue value
          * @param index an int serving as the index value.
          */
         public VJrgbValue(int r, int g, int b, int index)

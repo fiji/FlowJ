@@ -186,8 +186,8 @@ public class BIJstats
          * The relative SD (or SE) is obtained from the absolute SD (or SE) by dividing the (SE or SD) by the data value itself.
          * Note that these relative quantities are always unitless.
          * @param estimateAB the estimate of the combination A and B (determined by either multiplication or division, don't care here).
-         * @param estimateA, semA the estimate and standard deviation of estimate.
-         * @param estimateB, semBV the estimate and standard deviation of estimate.
+         * @param estimateA semA the estimate and standard deviation of estimate.
+         * @param estimateB semBV the estimate and standard deviation of estimate.
          * @return standard error of the mean for estimateAB.
          */
         public static double sem(double estimateAB, double estimateA, double semA, double estimateB, double semB)
@@ -222,7 +222,7 @@ public class BIJstats
 			      n++;
 			}
 		}
-		cum /=(float) n;
+		cum /= n;
 		return cum;
 	}
          /*
@@ -239,7 +239,7 @@ public class BIJstats
                  for (int j = 0; j < iN; j++)
                         v[i] += m[j][i];
                  for (int i = 0; i < iM; i++)
-                        v[i] /= (float) iN;
+                        v[i] /= iN;
                  return v;
          }
          /*
@@ -255,7 +255,7 @@ public class BIJstats
                  for (int i = 0; i < iM; i++)
                         v[j] += m[j][i];
                  for (int j = 0; j < iN; j++)
-                        v[j] /= (float) iM;
+                        v[j] /= iM;
                  return v;
          }
 	/*
@@ -271,7 +271,7 @@ public class BIJstats
 		for (int i = 0; i < iM; i++)
 		       v += m[j][i];
 		for (int j = 0; j < iN; j++)
-		       v /= (double) (iM * iN);
+		       v /= iM * iN;
 		return (float) v;
 	}
         /**
@@ -285,7 +285,7 @@ public class BIJstats
         }
         /**
          * Compute average of all values in vector v.
-         * @param v a vector of float[]
+         * @param m a vector of float[]
          * @return the average of all elements in v.
          */
         public static double avg(float [][] m)
@@ -315,7 +315,7 @@ public class BIJstats
         }
         /**
          * sum(1) computes summation of all values in matrix m.
-         * @param v a vector of float[]
+         * @param m a vector of float[]
          * @return the average of all elements in v.
          */
         public static double sum(float [][] m)
@@ -477,7 +477,7 @@ public class BIJstats
 	{ return thresholdFraction(v, (float) fraction); }
 	/**
 	 * Find the value in vector over which fraction of all values in vector lie.
-	 * @param vector a vector of values
+	 * @param v a vector of values
 	 * @param fraction a float [0-1].
 	 */
 	public static float thresholdFraction(float [] v, float fraction)
@@ -513,7 +513,7 @@ public class BIJstats
 	 * Compute the lowest bin into which the highest p percent of occurrences falls.
 	 * Used to compute things as "give me the occurence above which 10% of the histogram falls."
 	 * @param histogram an int[] with the ouccrence counts for each bin
-	 * @param p the fraction of histogram values desired.
+	 * @param fraction the fraction of histogram values desired.
 	 * @return an int, the index into the lowest bin that still falls among p.
 	 */
 	public static int binIndex(int [] histogram, float fraction)
@@ -524,7 +524,7 @@ public class BIJstats
 	              total += histogram[i];
                 int aggr = 0;
 		int bin = histogram.length - 1;
-		while ((fraction*total) - (float) aggr >= 0)
+		while ((fraction*total) - aggr >= 0)
 		{
 			//IJ.write("total "+total+" fraction="+(fraction*total)+" aggr="+aggr);
 			aggr += histogram[bin--];
@@ -648,8 +648,6 @@ public class BIJstats
         * From Press, Numerical Recipes in C, second edition.
         * @param data1 array of datapoints
         * @param data2 array of datapoints
-        * @param t
-        * @param prob
         */
         public static double ttest(float [] data1, float [] data2)
         {
@@ -660,7 +658,7 @@ public class BIJstats
                 //System.out.println("Avg's "+ave1+" "+ave2+" var's "+var1+" "+var2);
                 double df = data1.length+data2.length-2;
                 double svar = ((data1.length-1)*var1+(data2.length-1)*var2)/df;
-                double t = (ave1-ave2)/Math.sqrt(svar*(1d/(double)data1.length+1d/(double)data2.length));
+                double t = (ave1-ave2)/Math.sqrt(svar*(1d/data1.length+1d/data2.length));
                 //System.out.println("t "+t+" df "+df);
                 double prob = BIJfunctions.betai(0.5*df,0.5,df/(df+t*t));
                 return prob;
@@ -741,7 +739,7 @@ public class BIJstats
                 double var2 = var(data2);
                 double df = data1.length+data2.length-2;
                 double svar = ((data1.length-1)*var1+(data2.length-1)*var2)/df;
-                double t = (ave1-ave2)/Math.sqrt(svar*(1d/(double)data1.length+1d/(double)data2.length));
+                double t = (ave1-ave2)/Math.sqrt(svar*(1d/data1.length+1d/data2.length));
                 double prob = BIJfunctions.betai(0.5*df,0.5,df/(df+t*t));
                 //System.out.println("ttest: "+df+" "+var1+" "+var2+" "+svar+" "+aved+" "+ncorr+" "+t+" "+prob+" ");
                 return prob;
@@ -793,8 +791,8 @@ public class BIJstats
          /**
           * Compute the sensitivities of a test of which the result is in exp and the ground truth in truth,
           * for all classes n that occur in truth.
-          * @param exp  a float[] vector of test results, where 0 <= exp[n] < n.
-          * @param truth a float[] vector of ground truth, where 0 <= truth[n] < n.
+          * @param exp  a float[] vector of test results, where {@code 0 <= exp[n] < n}.
+          * @param truth a float[] vector of ground truth, where {@code 0 <= truth[n] < n}.
           * @param n the number of classes to determine the sensitivity for.
           * @return a float[] vector with the sensitivities for all classes in truth.
           */
@@ -812,8 +810,8 @@ public class BIJstats
          /**
           * Compute the specificities of a test of which the result is in exp and the ground truth in truth,
           * for all classes n that occur in truth.
-          * @param exp  a float[] vector of test results, where 0 <= exp[n] < n.
-          * @param truth a float[] vector of ground truth, where 0 <= truth[n] < n.
+          * @param exp  a float[] vector of test results, where {@code 0 <= exp[n] < n}.
+          * @param truth a float[] vector of ground truth, where {@code 0 <= truth[n] < n}.
           * @param n the number of classes to determine the sensitivity for.
           * @return a float[] vector with the specificities for all classes in truth.
           */
@@ -900,8 +898,8 @@ public class BIJstats
          /**
           * Compute the accuracy of a test of which the result is in exp and the ground truth in truth,
           * where test results in multiple classifications.
-          * @param exp  an int[] vector of test results, where 0 <= exp[n] < n.
-          * @param truth an int[] vector of ground truth, where 0 <= truth[n] < n.
+          * @param exp  an int[] vector of test results, where {@code 0 <= exp[n] < n}.
+          * @param truth an int[] vector of ground truth, where {@code 0 <= truth[n] < n}.
           * @param n the number of classes to determine the sensitivity for.
           * @return the combined accuracy.
           */
@@ -938,9 +936,6 @@ public class BIJstats
           * for class c.
           * sensitivity = true pos / (true pos + false neg)
           * sensitivity = a / (a+c)
-          * @param exp  a float[] vector of test results, where 0 <= exp[n] <= c.
-          * @param truth a float[] vector of ground truth, where 0 <= truth[n] <= c.
-          * @param c the class to determine sensitivity for.
           * @return the sensitivity.
           */
          public static double sensitivity(float [] table2x2)
@@ -953,9 +948,6 @@ public class BIJstats
           * for class c.
           * specificity = true neg / (true neg + false pos)
           * specificity = d / (b+d)
-          * @param exp  an int[] vector of test results, where 0 <= exp[n] <= c.
-          * @param truth an int[] vector of ground truth, where 0 <= truth[n] <= c.
-          * @param c the class to determine specificity for.
           * @return the specificity.
           */
          public static double specificity(float [] table2x2)

@@ -221,7 +221,7 @@ public class Convolver
 	/**
 	 * Convolution of float volume with symmetric 3D kernel in all dimensions.
 	 * The volume is organized as one 1D vector of width*height*depth.
-	 * @param v the volume.
+	 * @param volume the volume.
 	 * @param width the width in pixels of the volume.
 	 * @param height the height of the volume in pixels.
 	 * @param depth the height of the volume in pixels.
@@ -263,7 +263,7 @@ public class Convolver
 	/**
 	 * Convolution of float volume with symmetric 1D kernel in x dimension.
 	 * The volume is organized as one 1D vector of width*height*depth.
-	 * @param v the volume.
+	 * @param volume the volume.
 	 * @param width the width in pixels of the volume.
 	 * @param height the height of the volume in pixels.
 	 * @param depth the height of the volume in pixels.
@@ -297,7 +297,7 @@ public class Convolver
 	/**
 	 * Convolution of float volume with symmetric 1D kernel in y dimension.
 	 * The volume is organized as one 1D vector of width*height*depth.
-	 * @param v the volume.
+	 * @param volume the volume.
 	 * @param width the width in pixels of the volume.
 	 * @param height the height of the volume in pixels.
 	 * @param depth the height of the volume in pixels.
@@ -331,7 +331,7 @@ public class Convolver
 	/**
 	 * Convolution of float volume with symmetric 1D kernel in x dimension.
 	 * The volume is organized as one 1D vector of width*height*depth.
-	 * @param v the volume.
+	 * @param volume the volume.
 	 * @param width the width in pixels of the volume.
 	 * @param height the height of the volume in pixels.
 	 * @param depth the height of the volume in pixels.
@@ -365,7 +365,7 @@ public class Convolver
 	/**
 	 * Convolution of short volume with symmetric 3D kernel in all dimensions.
 	 * The volume is organized as one 1D vector of width*height*depth.
-	 * @param v the volume.
+	 * @param volume the volume.
 	 * @param width the width in pixels of the volume.
 	 * @param height the height of the volume in pixels.
 	 * @param depth the height of the volume in pixels.
@@ -503,9 +503,11 @@ public class Convolver
 			r[i]= image1[i] - image2[i];
 		return r;
 	}
+	
 	/**
-	 * Compute threshold of image. Everything < threshold is set to to 0, rest stays.
-	 * The image or volume is organized as one 1D vector.
+	 * Compute threshold of image. Everything under threshold is set to to 0, rest
+	 * stays. The image or volume is organized as one 1D vector.
+	 * 
 	 * @param image the image.
 	 * @param threshold a double with the treshold.
 	 * @deprecated
@@ -515,9 +517,11 @@ public class Convolver
 		for (int i = 0; i < image.length; i++)
 			image[i]= image[i] >= threshold ? image[i] : 0;
 	}
+	
 	/**
-	 * Normalize. Everything < threshold is set to to 0, over threshold to 255.
-	 * The image plane is organized as one 1D vector of width*height.
+	 * Normalize. Everything under threshold is set to to 0, over threshold to
+	 * 255. The image plane is organized as one 1D vector of width*height.
+	 * 
 	 * @param plane the image.
 	 * @param threshold a double with the treshold.
 	 * @deprecated

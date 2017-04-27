@@ -2,7 +2,7 @@ package volume;
 
 /**
  * This class implements a 2D separated Sobel differentiation kernel.
- * Gonzales & Woods, Digital Image Processing
+ * Gonzales &amp; Woods, Digital Image Processing
  *
  * (c) 1999-2002 Michael Abramoff. All rights reserved.
  * @author: Michael Abramoff

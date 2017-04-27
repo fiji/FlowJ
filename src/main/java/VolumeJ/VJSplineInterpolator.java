@@ -24,11 +24,14 @@ public abstract class VJSplineInterpolator extends VJInterpolator
         /**
          * Cubic spline interpolation.
          * Also known as Catmull-Rom spline
-         * Calculate sample = h(x) a + h(x) b + h(x) c + h(x) d,
-         * where a,b,c,d are the values at the sample locations, and x (-2,2) is the location between
-         * a and d.
+         * Calculate {@code sample = h(x) a + h(x) b + h(x) c + h(x) d},
+         * where {@code a,b,c,d} are the values at the sample locations,
+         * and {@code x (-2,2)} is the location between {@code a} and {@code d}.
          * @param x {0,1} the location at which to interpolate the sample
-         * @param a,b,c,d the values of the samples at -1, 0, 1, 2
+         * @param a the value of the sample at -1
+         * @param b the value of the sample at 0
+         * @param c the value of the sample at 1
+         * @param d the value of the sample at 2
          * @return the interpolated value
          */
         private static double cubicspline(double x, double a, double b, double c, double d)

@@ -36,8 +36,12 @@ public class VolumeShort extends Volume
         public VolumeShort() { this(0,0,0); }
         /**
         * Creates a short volume of defined size and aspect ratio.
-        * @param width, height, depth the dimensions of the volume
-        * @param aspectx, aspecty, aspectz the aspect ratios of the volume dimensions.
+        * @param width x dimension of the volume
+        * @param height y dimension of the volume
+        * @param depth z dimension of the volume
+        * @param aspectx the aspect ratio of the volume dimension in X.
+        * @param aspecty the aspect ratio of the volume dimension in Y.
+        * @param aspectz the aspect ratio of the volume dimension in Z.
         */
         public VolumeShort(int width, int height, int depth, double aspectx, double aspecty, double aspectz)
         {
@@ -48,7 +52,9 @@ public class VolumeShort extends Volume
         }
         /**
         * Creates a short volume of defined size and default aspect ratios.
-        * @param width, height, depth the dimensions of the volume
+        * @param width x dimension of the volume
+        * @param height y dimension of the volume
+        * @param depth z dimension of the volume
         */
         public VolumeShort(int width, int height, int depth)
         {
@@ -56,7 +62,7 @@ public class VolumeShort extends Volume
         }
         /**
         * Creates a float volume which is an exact copy of vl.
-        * @param vl the VolumeFloat to be copied.
+        * @param v1 the VolumeFloat to be copied.
         */
         public VolumeShort(VolumeShort v1)
         {
@@ -117,18 +123,21 @@ public class VolumeShort extends Volume
          * @param z the z position of the voxel
          * @return a Number with the voxel value at x,y,z
          */
+        @Override
         public Object get(int x, int y, int z) { return new Short(v[z][y][x]); }
         /**
          * Set the voxel value to a Number.
-         * @value a Number with the voxel value at x,y,z
+         * @param value a Number with the voxel value at x,y,z
          * @param x the x position of the voxel
          * @param y the y position of the voxel
          * @param z the z position of the voxel
          */
+        @Override
         public void set(Object value, int x, int y, int z) { v[z][y][x] = ((Number) value).shortValue(); }
         /**
          * @deprecated
          */
+        @Deprecated
         public void set(int x, int y, int z, int value) { v[z][y][x] = (short) value; }
         /**
          * Fill this volume from stack s with from slice start.
@@ -203,7 +212,7 @@ public class VolumeShort extends Volume
                 {
                         int offset = y * width;
                         for (int x = 0; x < width; x++)
-                                i[y][x] = (short) sh[offset + x];
+                                i[y][x] = sh[offset + x];
                 }
 	  }
         /**
@@ -244,7 +253,7 @@ public class VolumeShort extends Volume
                         {
                                 // Around x, convolve over -kernel.halfwidth ..x.. +kernel.halfwidth.
                                 for (int k = -kernel.halfwidth; k <= kernel.halfwidth; k++)
-                                        s += ((int) t1.v[z][y][x+k])*kernel.k[k+kernel.halfwidth];
+                                        s += (t1.v[z][y][x+k])*kernel.k[k+kernel.halfwidth];
                         }
                         v[z][y][x] = (short) s;
                 }
@@ -258,7 +267,7 @@ public class VolumeShort extends Volume
                         {
                                 // Around y, convolve over -kernel.halfwidth ..y.. +kernel.halfwidth.
                                 for (int k = -kernel.halfwidth; k <= kernel.halfwidth; k++)
-                                        s += ((int) v[z][y+k][x])*kernel.k[k+kernel.halfwidth];
+                                        s += (v[z][y+k][x])*kernel.k[k+kernel.halfwidth];
                         }
                         v[z][y][x] = (short) s;
                 }
@@ -272,7 +281,7 @@ public class VolumeShort extends Volume
                         {
                                 // Around z, convolve over -kernel.halfwidth ..  x .. +kernel.halfwidth.
                                 for (int k = -kernel.halfwidth; k <= kernel.halfwidth; k++)
-                                        s += ((int) t1.v[z+k][y][x])*kernel.k[k+kernel.halfwidth];
+                                        s += (t1.v[z+k][y][x])*kernel.k[k+kernel.halfwidth];
                         }
                         v[z][y][x] = (short) s;
 	        }

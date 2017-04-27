@@ -35,8 +35,8 @@ public class VJAlphaColor
         }
         /**
         * Use as an alpha-grayscale value container.
-        * @param alpha: the transparency [0-1]
-        * @param grayvalue: the grayscale value (integer).
+        * @param alpha the transparency [0-1]
+        * @param grayvalue the grayscale value (integer).
         */
         public VJAlphaColor(double alpha, int grayvalue)
         {
@@ -45,7 +45,7 @@ public class VJAlphaColor
         }
         /**
         * Use as a grayscale value container.
-        * @param grayvalue: the grayscale value (integer).
+        * @param grayvalue the grayscale value (integer).
         */
         public VJAlphaColor(int grayvalue)
         {
@@ -55,7 +55,7 @@ public class VJAlphaColor
         }
         /**
         * Use as a grayscale value container.
-        * @param grayvalue: the grayscale value (double).
+        * @param grayvalue the grayscale value (double).
         */
         public VJAlphaColor(double grayvalue)
         {
@@ -65,8 +65,10 @@ public class VJAlphaColor
         }
         /**
         * An alpha-grayscale value.
-        * @param alpha: the transparency [0-1]
-        * @param r, g, b: the RGB components [0-255] in int format.
+        * @param alpha the transparency [0-1]
+        * @param r the red component [0-255] in int format.
+        * @param g the green component [0-255] in int format.
+        * @param b the blue component [0-255] in int format.
         */
 	public VJAlphaColor(double alpha, int r, int g, int b)
 	{
@@ -76,8 +78,10 @@ public class VJAlphaColor
 	}
 	/**
         * An alpha-grayscale value for float RGB values.
-        * @param alpha: the transparency [0-1]
-        * @param r, g, b: the RGB components [0-1] in float format.
+        * @param alpha the transparency [0-1]
+        * @param r the red component [0-1] in float format.
+        * @param g the green component [0-1] in float format.
+        * @param b the blue component [0-1] in float format.
         */
         public VJAlphaColor(double alpha, double r, double g, double b)
         {
@@ -94,8 +98,8 @@ public class VJAlphaColor
         /**
         * Additive color mixing.
         * Compose this alphacolor with a fraction of color.
-        * @param color: the color to be composed (added) this alphacolor.
-        * @param contribution: the fraction of the components of color that are added.
+        * @param color the color to be composed (added) this alphacolor.
+        * @param contribution the fraction of the components of color that are added.
         */
         public void compose(VJAlphaColor color, float contribution)
         {
@@ -111,7 +115,6 @@ public class VJAlphaColor
          * Composing. Compose the classified voxel color into pixel, combining with shade and gradient.
          * The color value is attenuated with the shade. Update the alpha value for pixel.
          * Front to back alpha blending compositing. White lights only!
-         * @param g the interpolated gradient for shading
          * @param color contains the alpha value and the color (grayscale or RGB) of the classified values.
          * @param shade is the effect of shading.
         */
@@ -126,9 +129,9 @@ public class VJAlphaColor
 	/**
          * Additive shading and color mixing.
          * Compose this alphacolor with a shaded fraction of color.
-         * @param color: the color to be composed (added) this alphacolor.
-         * @param shade: the shade with which the fraction of color is shaded before adding.
-         * @param contribution: the fraction of the components of color that are added.
+         * @param color the color to be composed (added) this alphacolor.
+         * @param shade the shade with which the fraction of color is shaded before adding.
+         * @param contribution the fraction of the components of color that are added.
         */
         public void compose(VJAlphaColor color, VJShade shade, float contribution)
 	{
@@ -156,7 +159,7 @@ public class VJAlphaColor
          * Make a copy of this VJAlphaColor.
          */
 	public void copy(VJAlphaColor ac) { alpha = ac.alpha; r = ac.r; g = ac.g; b = ac.b; }
-	public void setAlpha(float alpha) { this.alpha = (float) alpha; }
+	public void setAlpha(float alpha) { this.alpha = alpha; }
 	/**
          * Return whether this alphacolor is almost opaque.
          * @return: true if this alphacolor is opaque, false if not.
@@ -176,11 +179,11 @@ public class VJAlphaColor
 			}
 		}
 	}
+	@Override
 	public String toString()
 	{
 		if (grayscale)
 			return ""+ij.IJ.d2s(alpha, 2)+":"+ij.IJ.d2s(r,1);
-        	else
-			return ""+ij.IJ.d2s(alpha, 2)+":"+ij.IJ.d2s(r,1)+","+ij.IJ.d2s(g,1)+","+ij.IJ.d2s(b,1);
+		return ""+ij.IJ.d2s(alpha, 2)+":"+ij.IJ.d2s(r,1)+","+ij.IJ.d2s(g,1)+","+ij.IJ.d2s(b,1);
 	}
 }

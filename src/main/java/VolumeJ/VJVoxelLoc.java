@@ -177,7 +177,7 @@ public class VJVoxelLoc
         /**
          * Move the location of this voxel with delta's in dos.
          * Useful for stepping through a number of voxels on a straight line.
-         * @param dos float[>=3] a vector containing the motion.
+         * @param dos {@code float[>=3]} a vector containing the motion.
          */
         public void move(float [] dos)
         {
@@ -190,7 +190,9 @@ public class VJVoxelLoc
         /**
          * Move the location of this voxel with delta's in dos.
          * Useful for stepping through a number of voxels on a straight line.
-         * @param dos float[>=3] a vector containing the motion.
+         * @param dx x value of vector containing the motion.
+         * @param dy y value of vector containing the motion.
+         * @param dz z value of vector containing the motion.
          */
         public void move(double dx, double dy, double dz)
         {
@@ -200,6 +202,7 @@ public class VJVoxelLoc
                 iz = (int) z;
                 hasWeights = false;
         }
+        @Override
         public String toString()
         {
                 String s = "VJVoxelLoc: "+x+","+y+","+z+": (voxel) "+ix+","+iy+","+iz+

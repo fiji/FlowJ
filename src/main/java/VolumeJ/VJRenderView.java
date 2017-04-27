@@ -61,7 +61,6 @@ public class VJRenderView extends Thread
          * The renderer is set.
          * The volume is centered at the center of the viewport.
          * @param renderer a VJRenderer
-         * @param scale the amount by which to scale the volume
          * @param message a useful message to identify the characteristics of this rendering.
          */
         public VJRenderView(VJRenderer renderer, String message)

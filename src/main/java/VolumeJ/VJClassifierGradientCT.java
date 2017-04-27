@@ -40,7 +40,7 @@ public class VJClassifierGradientCT extends VJClassifierLNotIndex0
         /**
          * Classify the (interpolated) voxel value and gradient magnitude into a alpha and rgb-value.
          * Index 0 is not visible, index 128 is semi-transparent.
-         * @param vvalue the Integer the interpolated value at this location.
+         * @param v the interpolated value at this location.
          * @param g the gradient at this location
         */
         public VJAlphaColor alphacolor(VJValue v, VJGradient g)

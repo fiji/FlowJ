@@ -54,10 +54,9 @@ public class BIJmatrix
         }
         /**
         * Compute the matrix product of m and n into r. Show progress.
-        * @param r a matrix of float[N][N]
+        * @param m a matrix of float[N][N]
         * @param a a matrix of float[N][M]
         * @param b a matrix of float[M][N]
-        * @return a matrix of float[N][N]
         */
         public static void mul(float [][] m, float [][] a, float [][] b, boolean doShowProgress)
         {
@@ -156,7 +155,7 @@ public class BIJmatrix
                 return n;
         }
         /**
-        * Compute the <bold>transpose</bold> of the outer product of the <bold>tranpose</bold> of a with b.
+        * Compute the <b>transpose</b> of the outer product of the <b>tranpose</b> of a with b.
         * Is the same as transpose(mul(transpose(a), b)), but saves a lot of space!
         * @param a a matrix of float[M][N]
         * @param b a matrix of float[M][N]
@@ -187,6 +186,7 @@ public class BIJmatrix
         * @return the resulting vector.
         * @deprecated
         */
+        @Deprecated
         public static float [] mul(float [] v, double scalar)
         {
                 int iN = v.length;
@@ -234,7 +234,6 @@ public class BIJmatrix
          * Compute the outer product of a matrix and a vector v and put the result in r.
          * @param a a float[][] matrix
          * @param v a float[] vector.
-         * @return a float[] vector  of the same size as v.
         */
         public static void mul(float [] r, float [][] a, float [] v)
         throws IllegalArgumentException
@@ -347,8 +346,7 @@ public class BIJmatrix
                                 else if (val > minmax[1])
 	                                  minmax[1] = val;
 	                }
-                        else
-                                ;//System.out.println("minmax found NaN at "+j);
+                  //else System.out.println("minmax found NaN at "+j);
 		}
 		return minmax;
 	}
@@ -408,7 +406,7 @@ public class BIJmatrix
 	/**
 	 * Return a vector with the absolutes of all elements in vector v.
 	 * v is not modified.
-	 * @param a float[] vector
+	 * @param v float[] vector
 	 * @return a new vector with the abs of v[].
 	 */
 	public static float [] abs(float [] v)
@@ -534,7 +532,7 @@ public class BIJmatrix
 	}
         /**
         * Compute the natural logarithmr of each element in vector v and put into r.
-        * If an element is < 0 and power is between -1 and 1, 0 is used to avoid taking the root of negative numbers.
+        * If an element is less than 0 and power is between -1 and 1, 0 is used to avoid taking the root of negative numbers.
         * @param r a float[] vector for the result.
         * @param v a float[] vector.
         */
@@ -550,7 +548,7 @@ public class BIJmatrix
         }
         /**
         * Compute the power'th power of each element in vector v and put into r.
-        * If an element is < 0 and power is between -1 and 1, 0 is used to avoid taking the root of negative numbers.
+        * If an element is less than 0 and power is between -1 and 1, 0 is used to avoid taking the root of negative numbers.
         * @param r a float[] vector for the result.
         * @param v a float[] vector.
         * @param power the power the exponent.
@@ -567,7 +565,7 @@ public class BIJmatrix
         }
         /**
         * Compute the power'th power of each element in vector v and put into r.
-        * If an element is < 0 and power is between -1 and 1, 0 is used to avoid taking the root of negative numbers.
+        * If an element is less than 0 and power is between -1 and 1, 0 is used to avoid taking the root of negative numbers.
         * @param r a float[] vector for the result.
         * @param v a float[] vector.
         * @param power the power the exponent.
@@ -652,8 +650,8 @@ public class BIJmatrix
 	/**
 	* Add (elements in) a matrix b to a matrix a.
         * a is MODIFIED!
-	* @param m a float[][] matrix.
-	* @param n a float[][] matrix.
+	* @param a a float[][] matrix.
+	* @param b a float[][] matrix.
 	*/
 	public static void add(float [][] a, float [][] b)
         throws IllegalArgumentException
@@ -670,7 +668,6 @@ public class BIJmatrix
         * @param r a float[][] matrix for the result.
 	* @param m a float[][] matrix.
 	* @param n a float[][] matrix.
-	* @return the subtracted modified matrix.
 	*/
 	public static void sub(float [][] r, float [][] m, float [][] n)
 	{
@@ -833,7 +830,7 @@ public class BIJmatrix
         }
         /**
          * Make a subset of m, including only those with an index which is equal or larger than start up to and including last.
-         * @param v a float[] vector
+         * @param m a float[] vector
          * @param start the start index of the set
          * @return a float[] vector
          */
@@ -946,8 +943,8 @@ public class BIJmatrix
         }
         /**
          * Invert 2x2 matrix m into inverse mi.
-         * @param mi, a double[2][2] that will be overwritten with the inverse of
-         * @param m, a double[2][2] that contains the matrix.
+         * @param mi a double[2][2] that will be overwritten with the inverse of
+         * @param m a double[2][2] that contains the matrix.
          */
         private static void invert2x2(float [][] mi, float [][] m)
         {
@@ -959,8 +956,8 @@ public class BIJmatrix
         }
         /**
          * Invert 3x3 matrix m into inverse mi.
-         * @param mi, a double[4][4] that will be overwritten with the inverse of
-         * @param m, a double[4][4] that contains the matrix.
+         * @param mi a double[4][4] that will be overwritten with the inverse of
+         * @param m a double[4][4] that contains the matrix.
          */
         private static void invert3x3(float [][] mi, float [][] m)
         {
@@ -1002,8 +999,8 @@ public class BIJmatrix
          * Invert 4x4 matrix m into inverse mi.
          * Uses Gauss-Jordan inversion.
          * See numerical recipes in C, second version.
-         * @param mi, a double[3][3] that will be overwritten with the inverse of
-         * @param m, a double[3][3] that contains the matrix.
+         * @param mi a double[3][3] that will be overwritten with the inverse of
+         * @param m a double[3][3] that contains the matrix.
          * throws IllegalArgumentException if inversion fails.
          */
         private static void invert4x4(float [][] mi, float [][] m)
@@ -1287,6 +1284,7 @@ public class BIJmatrix
          * @return the condition number of the W matrix.
          * @deprecated
          */
+        @Deprecated
         public static float pseudoinverse(float [][] JI, float[][] J, double singularLimit)
         {
                 int n = JI.length;
@@ -1310,10 +1308,11 @@ public class BIJmatrix
          * replaced by singularLimit.
          * @param JI the inverse of J after the call.
          * @param J the matrix for which the pseudoinverse will be computed.
-         * @param singularLimit, the threshold for computed values in the matrix below which they are treated as 0.
+         * @param singularLimit the threshold for computed values in the matrix below which they are treated as 0.
          * @return the condition number of the W matrix.
          * @deprecated
          */
+        @Deprecated
         public static double pseudoinverse(double [][] JI, double[][] J, double singularLimit)
         {
           int n = JI.length;

@@ -2,7 +2,7 @@ package bijnum;
 import ij.IJ;
 
 /**
- * This class implements a one-dimensional real->complex fast fourier transform
+ * This class implements a one-dimensional real-to-complex fast fourier transform
  * Copyright (c) 1999-2004, Michael Abramoff. All rights reserved.
  * @author: Michael Abramoff
  *
@@ -43,7 +43,7 @@ public class BIJfft
         }
         /**
          * Set up a BIJfft a matrix x of length power of 2.
-         * @param x the real array for which you will compute the 1-D FFT.
+         * @param dx the real array for which you will compute the 1-D FFT.
          */
         public BIJfft(double [] dx)
         {
@@ -58,7 +58,7 @@ public class BIJfft
         /**
          * Compute the 1-D Fast fourier transform for x.
          * x must have the same length as BIJfft was initialized with to make sure all tables are still valid.
-         * @param a vector x (power 2 length)
+         * @param x vector x (power 2 length)
          * @return the power spectrum as a float[].
          */
         public float [] compute(float [] x)

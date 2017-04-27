@@ -37,9 +37,10 @@ public class VJTrilinear extends VJInterpolator
          *  Does vl fall within the bounds of a volume for interpolation?
          *  @param vl a VJVoxelLoc for which you want to know whether it falls inside the bounds,
          *  taking account of support.
-         *  @param startx ... endz the bounds of the volume.
-         *  @param boolean whether or not vl falls within the bounds.
+         *  @param v the bounds of the volume.
+         *  @return boolean whether or not vl falls within the bounds.
         */
+        @Override
         public boolean isValid(VJVoxelLoc vl, Volume v)
         {
                 return (vl.ix >= 0 && vl.ix+1 < v.getWidth() &&
@@ -50,8 +51,9 @@ public class VJTrilinear extends VJInterpolator
          *  @param vl a VJVoxelLoc for which you want to know whether it falls inside the bounds,
          *  taking account of support for the gradient kernel.
          *  @param v the volume.
-         *  @param boolean whether or not vl falls within the bounds.
+         *  @return boolean whether or not vl falls within the bounds.
         */
+        @Override
         public boolean isValidGradient(VJVoxelLoc vl, Volume v)
         {
                 return (vl.ix-1 >= 0 && vl.ix+2 < v.getWidth() &&
@@ -65,8 +67,9 @@ public class VJTrilinear extends VJInterpolator
          *  @param c a VJCell for which you want to know whether it falls inside the bounds,
          *  taking account of support for the gradient kernel.
          *  @param v the volume.
-         *  @param boolean whether or not c falls within the bounds.
+         *  @return boolean whether or not c falls within the bounds.
         */
+        @Override
         public boolean isValidGradient(VJCell c, Volume v)
         {
                 // Some compilers give problems with combining the below.
@@ -85,6 +88,7 @@ public class VJTrilinear extends VJInterpolator
          * @param vl a location in the volume.
          * @return voxel, which contains the value in v at vl.
          */
+        @Override
         public VJValue value(VJValue voxel, Volume v, VJVoxelLoc vl)
         {
                 if (v instanceof VolumeShort)
@@ -121,6 +125,7 @@ public class VJTrilinear extends VJInterpolator
          * @param vl the VJVoxelLoc where to interpolate the gradient
          * @return a VJGradient with the interpolated value(s).
          */
+        @Override
         public VJGradient gradient(Volume v, VJVoxelLoc vl)
         {
                 if (v instanceof VolumeShort)

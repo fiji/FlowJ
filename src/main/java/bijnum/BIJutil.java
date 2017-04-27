@@ -62,7 +62,7 @@ public class BIJutil
         }
         /**
          * Compute the width of the images in imp, or the ROI if one has been selected.
-         * @imp an ImageJ ImagePlus
+         * @param imp an ImageJ ImagePlus
          * @return the width of the images in imp.
          */
         public static int getMatrixWidth(ImagePlus imp)
@@ -77,7 +77,7 @@ public class BIJutil
         }
         /**
          * Compute the width of the images in imp, containing a stack, including scaling.
-         * @imp an ImageJ ImagePlus
+         * @param imp an ImageJ ImagePlus
          * @param scaleFactor the scaling factor.
          * @return the width of the images in imp.
          */

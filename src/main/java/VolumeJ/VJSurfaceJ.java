@@ -285,8 +285,9 @@ implements ActionListener, ClipboardOwner, ItemListener, KeyListener
         /**
          * Activate the rendering and surface plot buttons, depending on whether or
          * not there is a stack, an image, or nothing available.
-         * @param iListLength the number of stacks available when VolumeJ started.
+         * @param listLength the number of stacks available when VolumeJ started.
          */
+        @Override
         protected void activateButtons(int listLength)
         {
                 ImagePlus imp = WindowManager.getCurrentImage();
@@ -294,11 +295,12 @@ implements ActionListener, ClipboardOwner, ItemListener, KeyListener
         }
         /**
          * Set the LUT of a classifier from an ImageJ or NIH LUT file.
-         * @param classifier, a VJClassifier for which you want to read the LUT.
+         * @param classifier a VJClassifier for which you want to read the LUT.
          * @param path a filename to be read. Get from defaultpath, if defaultpath == "",
          * ask user for filename.
          * @return true if LUT of classifier was sucessfully set, false otherwise.
          */
+        @Override
         public boolean getLUT(VJClassifier classifier, String path)
         {
 		if (path.equals(""))
@@ -325,15 +327,14 @@ implements ActionListener, ClipboardOwner, ItemListener, KeyListener
                         VJUserInterface.write("Classifier LUT set to: "+path);
                         return true;
                 }
-                else
-                {
-                        IJ.error("Cannot change LUT");
-                        return false;
-                }
+                IJ.error("Cannot change LUT");
+                return false;
 	}
         /**
          * Read an ImageJ or NIH LUT from file.
-         * @param reds, greens, blues must be byte[256] and will be filled with the LUT values.
+         * @param reds must be byte[256] and will be filled with the red LUT values.
+         * @param greens must be byte[256] and will be filled with the green LUT values.
+         * @param blues must be byte[256] and will be filled with the blue LUT values.
          * @param path the filename/filepath to be read.
          * @param raw flag for reading NIH (false) or ImageJ (true) format LUT files.
          * @return the number of entries in the LUT.

@@ -77,7 +77,7 @@ public class BIJpca
 	 * Compute the PCA.
          * a is modified. a is a '3-D' array of images, organized as the columns
 	 * of a 2-D matrix.
-         * @param a a matrix of float[][]. column size should be > row size.
+         * @param a a matrix of float[][]. column size should be greater than row size.
 	 * @return psi, the eigenimages in corrected format (sorted by eigenvalue).
 	 */
 	public float [][] compute(float [][] a)
@@ -230,7 +230,7 @@ public class BIJpca
         /**
          * Compute a (compacted) linear combination of the imagevectors, using only with factor set to 1.
          * f = SUM(factor-i an-i psi-i)
-         * @param an the eigenvector coordinates (an) for the desired linear combination.
+         * @param factor the eigenvector coordinates (an) for the desired linear combination.
          * @return the linear combination as a vector.
          */
         public float [][] computeLinearCombination(float [] factor)

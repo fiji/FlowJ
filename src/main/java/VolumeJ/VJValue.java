@@ -3,8 +3,8 @@ package VolumeJ;
 /**
  * VJValue.
  * Contains a voxel value intended to be rendered, which may be int, float or vector etc.
- * This is a more polymorphic way of passing interpolated voxel values around than &-ing
- * them into an int or using ad hoc float vectors.
+ * This is a more polymorphic way of passing interpolated voxel values around
+ * than {@code &}-ing them into an int or using ad hoc float vectors.
  *
  * Copyright (c) 2001-2002, Michael Abramoff. All rights reserved.
  * @author: Michael Abramoff

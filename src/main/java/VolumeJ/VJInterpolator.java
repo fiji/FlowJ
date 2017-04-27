@@ -51,7 +51,7 @@ public abstract class VJInterpolator
 	 *  @param c a VJCell for which you want to know whether it falls inside the bounds,
 	 *  taking account of support for the gradient kernel.
 	 *  @param v the volume to be interpolated.
-	 *  @param boolean whether or not c falls within the bounds.
+	 *  @return boolean whether or not c falls within the bounds.
 	*/
 	public abstract boolean isValidGradient(VJCell c, Volume v);
 	/**
@@ -70,6 +70,7 @@ public abstract class VJInterpolator
 	 * @return a VJGradient which contains the gradient in v at vl.
 	 */
 	public abstract VJGradient gradient(Volume v, VJVoxelLoc vl);
+	@Override
 	public abstract String toString();
 	/**
 	 * This method should not be here, but where:
@@ -92,7 +93,7 @@ public abstract class VJInterpolator
 		for (int y = vl.iy; y < vl.iy+REGION; y++)
 		for (int x = vl.ix; x < vl.ix+REGION; x++)
 		{
-			int delta = (int) threshold - (int) (v.b[z*v.getHeight()*v.getWidth()+y*v.getWidth()+x]&0xff);
+			int delta = (int) threshold - (v.b[z*v.getHeight()*v.getWidth()+y*v.getWidth()+x]&0xff);
 			if (Math.abs(delta) < Math.abs(smallestDelta))
 			{
 				smallestVl.setx(x); smallestVl.sety(y); smallestVl.setz(z);

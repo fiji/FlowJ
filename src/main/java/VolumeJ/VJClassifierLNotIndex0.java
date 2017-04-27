@@ -3,11 +3,11 @@ import java.awt.Color;
 
 /**
  * This class implements the Levoy tent classification function with indexing.
- * <pre>
- * index = 0 is not shown (opacity 0).
- * index == 1 is white
- * index > 1 direct to the spectrum LUT (index == 2 is red, index == 128 is green andsoforth)
- * </pre>
+ * <ul>
+ * <li>{@code index = 0} is not shown (opacity 0).</li>
+ * <li>{@code index == 1} is white</li>
+ * <li>{@code index > 1} direct to the spectrum LUT ({@code index == 2} is red, {@code index == 128} is green andsoforth)</li>
+ * </ul>
  *
  * It can be subclassed for variations on the lookup methods.
  *
@@ -43,11 +43,13 @@ public class VJClassifierLNotIndex0 extends VJClassifierLevoy
          * If the index == 0 (this classifier), the voxel will be skipped.
          * @param v the value of which has to be decided whether it is visiblw or not.
         */
+        @Override
         public boolean visible(VJValue v)
         {
                 int index = v.index;
                 return (index != 0);
         }
+        @Override
         public String toLongString()
         {
                 return "Levoy ("+((does()==RGB)?"RGB":"grays")+") classifier with >=1 indexing. Voxels more opaque "+
@@ -57,12 +59,13 @@ public class VJClassifierLNotIndex0 extends VJClassifierLevoy
         }
         /**
          * Setup a default LUT.
-         * <pre>
-         * index = 0 is not shown (opacity 0).
-         * index == 1 is white
-         * index > 1 direct to the spectrum LUT (index == 2 is red, index == 128 is green andsoforth)
-         * </pre>
+         * <ul>
+         * <li>{@code index = 0} is not shown (opacity 0).</li>
+         * <li>{@code index == 1} is white</li>
+         * <li>{@code index > 1} direct to the spectrum LUT ({@code index == 2} is red, {@code index == 128} is green andsoforth)</li>
+         * </ul>
         */
+        @Override
         protected void defaultLUT()
         {
 				if (nrIndexBits > 0)

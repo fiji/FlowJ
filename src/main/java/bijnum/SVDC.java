@@ -67,13 +67,9 @@ Date        Translator        Changes
 
 *IMPORTANT:  The "_j" suffixes indicate that these routines use
 *Java/C style indexing.  For example, you will see
-*
-*   for (i = 0; i < n; i++)
-*
+* {@code for (i = 0; i < n; i++)}
 *rather than
-*
-*   for (i = 1; i <= n; i++)
-*
+* {@code for (i = 1; i <= n; i++)}
 *To use the "_j" routines you will have
 *to fill elements 0 through n - 1 rather than elements 1 through n.
 *Versions of these programs that use FORTRAN style indexing
@@ -132,7 +128,6 @@ public class SVDC extends Object {
 *@param  v     The right singular vectors
 *@param  work  A work array
 *@param  job   See the documentation in the code
-*@param  info  See the documentation in the code
 *
 */
 

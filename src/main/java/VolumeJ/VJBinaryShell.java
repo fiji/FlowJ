@@ -83,7 +83,7 @@ public class VJBinaryShell extends Volume
          * @param x the x position of the voxel
          * @param y the y position of the voxel
          * @param z the z position of the voxel
-         * @value a Number with 0 for false and 1 for true
+         * @return a Number with 0 for false and 1 for true
          */
         public Object get(int x, int y, int z) { return new Boolean(v[z*height*width+y*width+x]); }
         /**
@@ -96,7 +96,7 @@ public class VJBinaryShell extends Volume
         public void set(Object value, int x, int y, int z) { v[z*height*width+y*width+x] = ((Boolean) value).booleanValue(); }
         /**
          * Determine whether there is a surface in the cell that vl is in.
-         * @param x,y,z the lowerleftanterior corner of the cell
+         * @param vl the lowerleftanterior corner of the cell
          * @return true if the cell corresponding to x,y,z is part of a surface, false if not.
          */
         public boolean surface(VJVoxelLoc vl)
@@ -114,7 +114,9 @@ public class VJBinaryShell extends Volume
         }
         /**
          * Determine whether cell contains a surface.
-         * @param cell the cell to examine.
+         * @param ix x coordinate of the cell to examine.
+         * @param iy y coordinate of the cell to examine.
+         * @param iz z coordinate of the cell to examine.
          * @return true if the cell is part of a surface, false if not, or is not in the shell.
          */
         public boolean surface(int ix, int iy, int iz)
@@ -123,8 +125,7 @@ public class VJBinaryShell extends Volume
                   iy >= 0 && iy < height &&
                   iz >= 0 && iz < depth)
                         return v[iz*height*width+iy*width+ix];
-                else
-                        return false;
+                return false;
         }
         /**
          * Make an ImageJ imagestack from this shell. For debugging purposes only.

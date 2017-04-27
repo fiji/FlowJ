@@ -107,7 +107,7 @@ public class VJThresholdedVolume extends Volume
          * @param x the x position of the voxel
          * @param y the y position of the voxel
          * @param z the z position of the voxel
-         * @value a Number with 0 for false and 1 for true
+         * @return value a Number with 0 for false and 1 for true
          */
         public Object get(int x, int y, int z) { return new Boolean(v[z*height*width+y*width+x]); }
         /**

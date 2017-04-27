@@ -92,7 +92,7 @@ public class HyperVolume extends Volume implements java.io.Serializable
         public Object get(int x, int y, int z) { return (Object) hv[z][y][x]; }
         /**
          * Set the vector value of the hypervolume that is at x,y,z to value.
-         * @value a Number with the voxel value at x,y,z
+         * @param value a Number with the voxel value at x,y,z
          * @param x the x position of the voxel
          * @param y the y position of the voxel
          * @param z the z position of the voxel

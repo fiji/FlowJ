@@ -54,11 +54,14 @@ public class VJSurfacePlotShell extends VJRenderViewCine
          * This shell can render a stack of surface plots from a stack of images.
          * @param renderer a VJRenderer
          * @param scale the amount by which to scale the volume
-         * @param rotx, roty, rotz the amount by which to rotate the amount in that order.
-         * @param vimages: a VolumeShort containing the images to be sufrace plotted.
-         * @param min, max: the minimum and maxium values within vimages (determines the height of each srface volume)
-         * @param aspectz: the aspect ration in the z-direction.
-         * @param sigma: Standard deviation of a Gaussian smoothing kernel before rendering starts.
+         * @param xrot the amount by which to rotate in X
+         * @param yrot the amount by which to rotate in Y
+         * @param zrot the amount by which to rotate in Z
+         * @param vimages a VolumeShort containing the images to be surface plotted.
+         * @param min the minimum value within vimages (determines the height of each surface volume)
+         * @param max the maximum value within vimages (determines the height of each surface volume)
+         * @param aspectz the aspect ration in the z-direction.
+         * @param sigma Standard deviation of a Gaussian smoothing kernel before rendering starts.
          * @param message a useful message to identify the characteristics of this rendering.
          */
         public VJSurfacePlotShell(VJRenderer renderer,
@@ -109,8 +112,10 @@ public class VJSurfacePlotShell extends VJRenderViewCine
          * For now, only 8-bit and 16-bit images can be processed.
          * @param vimages an VolumeShort containing the 2-D images.
          * @param k the index to vimages.
-         * @param depth the eventual number of slices in the volume
+         * @param max the eventual number of slices in the volume
          * @param min the minimum pixel value in vimages.v[k].
+         * @param aspectz
+         * @param sigma
          */
         protected static VolumeShort imagesVolumeToSurfaceVolume(VolumeShort vimages,
                 int k, float max, float min, float aspectz, float sigma)

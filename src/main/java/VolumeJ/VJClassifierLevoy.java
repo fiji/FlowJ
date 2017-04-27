@@ -139,30 +139,30 @@ public class VJClassifierLevoy extends VJClassifier
 			// Is an RGB (HSB format) voxel! Use true colors.
 			Color color = java.awt.Color.getHSBColor(((VJValueHSB)v).getHue(),
 			      ((VJValueHSB)v).getSaturation(), 1);
-			return new VJAlphaColor((double) opacityTable[entry],
+			return new VJAlphaColor(opacityTable[entry],
 						color.getRed(), color.getGreen(), color.getBlue());
 		}
-		else return new VJAlphaColor((double) opacityTable[entry],
+		return new VJAlphaColor(opacityTable[entry],
 			(lut[v.index*3+0]&0xff),
 			(lut[v.index*3+1]&0xff),
 			(lut[v.index*3+2]&0xff));
 	}
+	
 	/**
-		Slice view classification.
-		Classify the (interpolated) voxel value for a slice view.
-		If the index is 0, the value is rendered straight away with opacity 1.
-		If the index > 0, the index is used to determine the color of the rendering, also
-		with opacity 1.
-	*/
+	 * Slice view classification. Classify the (interpolated) voxel value for a
+	 * slice view. If the index is 0, the value is rendered straight away with
+	 * opacity 1. If the {@code index > 0}, the index is used to determine the
+	 * color of the rendering, also with opacity 1.
+	 */
+	@Override
 	public VJAlphaColor alphacolor(VJValue v)
 	{
 		int intensity = v.intvalue;
 		int index = v.index;
 		if (index == 0)
-			return new VJAlphaColor((double) 1, intensity, intensity, intensity);
-		else
-			return new VJAlphaColor(1, lut[index*3+0]&0xff, lut[index*3+1]&0xff,
-				lut[index*3+2]&0xff);
+			return new VJAlphaColor(1, intensity, intensity, intensity);
+		return new VJAlphaColor(1, lut[index*3+0]&0xff, lut[index*3+1]&0xff,
+			lut[index*3+2]&0xff);
 	}
 	/**
 	 * Compute the opacities for a range of voxel values and gradient values.

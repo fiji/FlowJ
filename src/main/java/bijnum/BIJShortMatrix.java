@@ -91,7 +91,7 @@ public class BIJShortMatrix
 	}
 	/**
 	* Add a scalar to all entries in a matrix.
-	* @param m a float[][] matrix.
+	* @param v a float[][] matrix.
 	* @param scalar a scalar to subtract.
 	* @return the subtracted matrix.
 	*/
