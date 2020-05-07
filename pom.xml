@@ -89,13 +89,15 @@
 	</ciManagement>
 
 	<properties>
-		<package-name>FlowJ</package-name>
+		<automatic-module-name>sc.fiji.FlowJ</automatic-module-name>
 		<license.licenseName>gpl_v3</license.licenseName>
-		<license.copyrightOwners>Fiji developers.</license.copyrightOwners>
-		<license.projectName>Fiji distribution of ImageJ for the life sciences.</license.projectName>
+		<license.copyrightOwners>Michael Abramoff and Fiji developers.</license.copyrightOwners>
+		<license.projectName>Bio-medical imaging in Java.</license.projectName>
 
 		<!-- NB: Deploy releases to the SciJava Maven repository. -->
 		<releaseProfiles>deploy-to-scijava</releaseProfiles>
+
+		<bij.version>1.0.0</bij.version>
 	</properties>
 
 	<repositories>
