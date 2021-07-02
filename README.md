@@ -1,3 +1,5 @@
+[![](https://github.com/fiji/FlowJ/actions/workflows/build-main.yml/badge.svg)](https://github.com/fiji/FlowJ/actions/workflows/build-main.yml)
+
 # Biomedical Imaging in Java
 
 This is Fiji's fork of Michael Abramoff's "Biomedical Imaging in Java" (bij)
