@@ -1,4 +1,4 @@
-[![](https://github.com/fiji/FlowJ/actions/workflows/build-main.yml/badge.svg)](https://github.com/fiji/FlowJ/actions/workflows/build-main.yml)
+[![Build Status](https://github.com/fiji/FlowJ/actions/workflows/build.yml/badge.svg)](https://github.com/fiji/FlowJ/actions/workflows/build.yml)
 
 # Biomedical Imaging in Java
 
